@@ -2,13 +2,13 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Accessibility, BookOpenText, LibraryBig, UserRound } from "lucide-react";
+import { BookOpenText, LibraryBig, Upload, UserRound } from "lucide-react";
 import { WalletButton } from "@/components/shared/wallet-button";
 import { cn } from "@/utils/cn";
 
 const navItems = [
-  { href: "/onboarding", label: "Onboarding", icon: Accessibility },
   { href: "/library", label: "Library", icon: LibraryBig },
+  { href: "/upload", label: "Upload", icon: Upload },
   { href: "/profile", label: "Profile", icon: UserRound },
 ];
 
