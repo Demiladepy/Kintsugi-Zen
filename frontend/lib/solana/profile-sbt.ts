@@ -22,6 +22,31 @@ export type MintProfileSbtResult = {
   signature: string;
 };
 
+type ParsedTokenAccountInfo = {
+  account: {
+    data: {
+      parsed: {
+        info: {
+          tokenAmount: {
+            amount: string;
+          };
+        };
+      };
+    };
+  };
+};
+
+type ParsedTokenAccountsByOwnerResponse = {
+  value: ParsedTokenAccountInfo[];
+};
+
+type TokenAccountsByOwnerConnection = {
+  getParsedTokenAccountsByOwner: (
+    owner: PublicKey,
+    filter: { programId: PublicKey },
+  ) => Promise<ParsedTokenAccountsByOwnerResponse>;
+};
+
 export async function mintProfileSbt({ wallet, connection, metadataUri }: MintProfileSbtParams): Promise<MintProfileSbtResult> {
   if (!wallet.publicKey || !wallet.sendTransaction) {
     throw new Error("Wallet not connected.");
@@ -63,7 +88,7 @@ export async function mintProfileSbt({ wallet, connection, metadataUri }: MintPr
   };
 }
 
-export async function hasPassportForWallet(connection: { getParsedTokenAccountsByOwner: Function }, owner: PublicKey) {
+export async function hasPassportForWallet(connection: TokenAccountsByOwnerConnection, owner: PublicKey) {
   const accounts = await connection.getParsedTokenAccountsByOwner(owner, { programId: TOKEN_2022_PROGRAM_ID });
-  return accounts.value.some((a: any) => Number(a.account.data.parsed.info.tokenAmount.amount) > 0);
+  return accounts.value.some((account) => Number(account.account.data.parsed.info.tokenAmount.amount) > 0);
 }

@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import { Lora } from "next/font/google";
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
@@ -10,16 +9,6 @@ import "./globals.css";
 const lora = Lora({
   variable: "--font-reading",
   subsets: ["latin"],
-});
-
-const openDyslexic = localFont({
-  src: [
-    { path: "../public/fonts/OpenDyslexic-Regular.woff2", weight: "400", style: "normal" },
-    { path: "../public/fonts/OpenDyslexic-Bold.woff2", weight: "700", style: "normal" },
-  ],
-  variable: "--font-dyslexic",
-  display: "swap",
-  fallback: ["Arial", "sans-serif"],
 });
 
 export const metadata: Metadata = {
@@ -35,7 +24,8 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${GeistSans.variable} ${GeistMono.variable} ${lora.variable} ${openDyslexic.variable} h-full antialiased`}
+      className={`${GeistSans.variable} ${GeistMono.variable} ${lora.variable} h-full antialiased`}
+      style={{ ["--font-dyslexic" as string]: "Arial, sans-serif" }}
     >
       <body className="min-h-full">
         <a href="#main-content" className="skip-link">

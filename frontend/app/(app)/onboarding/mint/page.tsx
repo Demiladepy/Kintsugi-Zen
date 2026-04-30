@@ -40,14 +40,46 @@ export default function OnboardingMintPage() {
 
       setState("pending");
       setProgress(1);
-      const uploadRes = await fetch("/api/upload", {
+      const walletAddress = wallet.publicKey?.toBase58();
+      if (!walletAddress) throw new Error("Missing wallet address.");
+      if (!wallet.signMessage) throw new Error("Wallet does not support message signing.");
+
+      const challengeRes = await fetch(`/api/auth/challenge?wallet=${walletAddress}`);
+      const challengeJson = await challengeRes.json();
+      if (!challengeRes.ok) throw new Error(challengeJson?.error?.message ?? "Challenge generation failed.");
+
+      const signatureBytes = await wallet.signMessage(new TextEncoder().encode(challengeJson.challenge));
+      const signature = (await import("bs58")).default.encode(signatureBytes);
+
+      const uploadRes = await fetch("/api/profile/upload", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ kind: "profile", payload: currentPreferences }),
+        body: JSON.stringify({
+          walletAddress,
+          challenge: challengeJson.challenge,
+          signature,
+          preferences: {
+            cognitive: currentPreferences.cognitiveProfiles,
+            sensory: {
+              fontSize: currentPreferences.fontScale,
+              contrast: currentPreferences.contrast,
+              letterSpacing: currentPreferences.letterSpacing,
+              lineHeight: currentPreferences.lineHeight,
+              motion: currentPreferences.reduceMotion ? "reduced" : "full",
+              theme: currentPreferences.colorTheme,
+            },
+            language: {
+              complexity: currentPreferences.readingComplexity,
+              chunkLength: currentPreferences.chunkLength,
+              audioSupport: currentPreferences.audioSupport,
+              visualAids: currentPreferences.visualAids,
+            },
+          },
+        }),
       });
       const uploadJson = await uploadRes.json();
-      if (!uploadRes.ok) throw new Error(uploadJson?.error ?? "Profile upload failed.");
-      setIrysId(uploadJson.id);
+      if (!uploadRes.ok) throw new Error(uploadJson?.error?.message ?? "Profile upload failed.");
+      setIrysId(uploadJson.uri ?? uploadJson.id);
 
       setProgress(2);
       const mintResult = await mintProfileSbt({

@@ -1,0 +1,11 @@
+[package]
+name = "passport_directory"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+name = "passport_directory"
+
+[dependencies]
+anchor-lang = "0.30.1"

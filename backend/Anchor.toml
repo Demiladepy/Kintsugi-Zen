@@ -1,0 +1,14 @@
+[features]
+resolution = true
+skip-lint = false
+
+[programs.localnet]
+sensory_registry = "SensReg111111111111111111111111111111111111"
+passport_directory = "PassDir111111111111111111111111111111111111"
+
+[provider]
+cluster = "Localnet"
+wallet = "~/.config/solana/id.json"
+
+[scripts]
+test = "anchor test"

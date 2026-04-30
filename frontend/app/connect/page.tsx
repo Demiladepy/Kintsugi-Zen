@@ -3,10 +3,19 @@
 import { useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { WalletAppProvider } from "@/components/providers/wallet-provider";
 import { WalletButton } from "@/components/shared/wallet-button";
 import { useProfile } from "@/hooks/use-profile";
 
 export default function ConnectPage() {
+  return (
+    <WalletAppProvider>
+      <ConnectContent />
+    </WalletAppProvider>
+  );
+}
+
+function ConnectContent() {
   const router = useRouter();
   const { connected, isLoading, data } = useProfile();
 
