@@ -1,18 +1,10 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { Geist_Mono, Geist, Lora } from "next/font/google";
+import { Lora } from "next/font/google";
+import { GeistMono } from "geist/font/mono";
+import { GeistSans } from "geist/font/sans";
 import { Toaster } from "sonner";
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-mono",
-  subsets: ["latin"],
-});
 
 const lora = Lora({
   variable: "--font-reading",
@@ -42,7 +34,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${lora.variable} ${openDyslexic.variable} h-full antialiased`}
+      className={`${GeistSans.variable} ${GeistMono.variable} ${lora.variable} ${openDyslexic.variable} h-full antialiased`}
     >
       <body className="min-h-full">
         <a href="#main-content" className="skip-link">
