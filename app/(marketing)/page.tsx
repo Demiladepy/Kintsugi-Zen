@@ -1,19 +1,31 @@
+import Link from "next/link";
+import { BentoGrid } from "@/components/marketing/bento-grid";
+import { Hero } from "@/components/marketing/hero";
+import { HowItWorks } from "@/components/marketing/how-it-works";
+
 export default function MarketingPage() {
   return (
-    <main className="mx-auto flex min-h-screen w-full max-w-6xl flex-col justify-center px-6 py-20 sm:px-10">
-      <div className="max-w-3xl space-y-8">
-        <p className="text-mono uppercase tracking-[0.16em] text-primary">Sensory Passport</p>
-        <h1 className="text-display text-foreground">
-          Adaptive educational experiences, personalized by your on-chain accessibility passport.
-        </h1>
-        <p className="max-w-2xl text-body text-muted-foreground">
-          The protocol mints non-transferable Token-2022 profiles that describe learning preferences. Modules are then
-          transformed in real time to match each learner&apos;s sensory needs.
-        </p>
-        <div className="h-48 rounded-2xl border border-border bg-card/80 p-6">
-          <p className="text-sm text-muted-foreground">Step 1 complete: project scaffold, fonts, and design tokens are configured.</p>
-        </div>
-      </div>
+    <main>
+      <Hero />
+      <section className="mx-auto flex w-full max-w-7xl flex-wrap items-center gap-4 border-y border-border px-4 py-5 text-sm text-muted-foreground sm:px-8">
+        <span>Built on</span>
+        <span>Solana</span>
+        <span>·</span>
+        <span>Token-2022</span>
+        <span>·</span>
+        <span>Irys</span>
+        <span>·</span>
+        <span>Arweave</span>
+      </section>
+      <HowItWorks />
+      <BentoGrid />
+      <section className="mx-auto w-full max-w-7xl px-4 pb-20 pt-8 text-center sm:px-8">
+        <h2 className="mb-3 text-h2">Start with one click.</h2>
+        <p className="mb-6 text-muted-foreground">It takes 30 seconds. No email. No account.</p>
+        <Link href="/connect" className="inline-flex min-h-11 items-center rounded-xl bg-primary px-5 py-3 font-semibold text-primary-foreground">
+          Connect Wallet
+        </Link>
+      </section>
     </main>
   );
 }
