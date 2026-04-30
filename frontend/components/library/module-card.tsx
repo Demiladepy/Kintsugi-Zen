@@ -7,7 +7,7 @@ type ModuleCardProps = {
 
 export function ModuleCard({ module }: ModuleCardProps) {
   return (
-    <Link href={`/modules/${module.id}`} className="group rounded-2xl border border-border bg-card transition hover:-translate-y-0.5 hover:border-primary/40">
+    <Link href={`/modules/${module.id}`} className="group rounded-2xl border border-border bg-card transition motion-safe:duration-200 motion-safe:hover:-translate-y-1 hover:border-primary/40">
       <div className="aspect-video rounded-t-2xl bg-gradient-to-br from-primary/15 via-accent-violet/10 to-muted" aria-hidden />
       <div className="space-y-3 p-4">
         <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">

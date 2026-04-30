@@ -21,7 +21,7 @@ export function Hero() {
               See How It Works <ArrowDownRight className="ml-2 h-4 w-4" />
             </a>
           </div>
-          <div className="inline-flex items-center gap-2 rounded-lg border border-border bg-card px-3 py-2 text-sm text-muted-foreground">
+          <div className="inline-flex items-center gap-2 rounded-lg border border-border bg-card px-3 py-2 text-sm text-muted-foreground motion-safe:animate-pulse">
             <Sparkles className="h-4 w-4 text-primary" />
             Live, profile-aware content transformations without wallet connection required.
           </div>

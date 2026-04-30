@@ -4,6 +4,7 @@ import { Lora } from "next/font/google";
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
 import { Toaster } from "sonner";
+import { AxeDevtools } from "@/components/dev/axe-devtools";
 import "./globals.css";
 
 const lora = Lora({
@@ -43,6 +44,7 @@ export default function RootLayout({
         <div id="main-content" className="min-h-full">
           {children}
         </div>
+        <AxeDevtools />
         <Toaster richColors position="top-right" />
       </body>
     </html>

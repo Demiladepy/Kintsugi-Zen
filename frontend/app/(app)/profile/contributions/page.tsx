@@ -1,5 +1,6 @@
 import { ProfileHeader } from "@/components/profile/profile-header";
 import { ProfileTabs } from "@/components/profile/profile-tabs";
+import { Area, AreaChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 
 const created = [
   { title: "A Structured Introduction to Compiler Pipelines", earnings: "0.089 SOL" },
@@ -11,11 +12,34 @@ const transformed = [
   { title: "Trade Networks in the Mediterranean", earnings: "0.017 SOL" },
 ];
 
+const chartData = [
+  { day: "Mon", earned: 0.011 },
+  { day: "Tue", earned: 0.022 },
+  { day: "Wed", earned: 0.031 },
+  { day: "Thu", earned: 0.052 },
+  { day: "Fri", earned: 0.068 },
+  { day: "Sat", earned: 0.093 },
+  { day: "Sun", earned: 0.117 },
+];
+
 export default function ProfileContributionsPage() {
   return (
     <section className="space-y-5">
       <ProfileHeader />
       <ProfileTabs />
+      <div className="rounded-2xl border border-border bg-card p-5">
+        <h2 className="mb-3 text-xl font-semibold">Earnings trend</h2>
+        <div className="h-56 w-full">
+          <ResponsiveContainer width="100%" height="100%">
+            <AreaChart data={chartData}>
+              <XAxis dataKey="day" stroke="hsl(var(--muted-foreground))" />
+              <YAxis stroke="hsl(var(--muted-foreground))" />
+              <Tooltip />
+              <Area type="monotone" dataKey="earned" stroke="hsl(var(--primary))" fill="hsl(var(--primary) / 0.2)" />
+            </AreaChart>
+          </ResponsiveContainer>
+        </div>
+      </div>
       <div className="grid gap-5 lg:grid-cols-2">
         <article className="rounded-2xl border border-border bg-card p-5">
           <h2 className="mb-3 text-xl font-semibold">Modules I&apos;ve created</h2>

@@ -22,9 +22,17 @@ export default function MarketingPage() {
       <section className="mx-auto w-full max-w-7xl px-4 pb-20 pt-8 text-center sm:px-8">
         <h2 className="mb-3 text-h2">Start with one click.</h2>
         <p className="mb-6 text-muted-foreground">It takes 30 seconds. No email. No account.</p>
-        <Link href="/connect" className="inline-flex min-h-11 items-center rounded-xl bg-primary px-5 py-3 font-semibold text-primary-foreground">
-          Connect Wallet
-        </Link>
+        <div className="flex flex-wrap items-center justify-center gap-3">
+          <Link href="/connect" className="inline-flex min-h-11 items-center rounded-xl bg-primary px-5 py-3 font-semibold text-primary-foreground">
+            Connect Wallet
+          </Link>
+          <Link href="/about" className="inline-flex min-h-11 items-center rounded-xl border border-border px-5 py-3 text-sm">
+            About
+          </Link>
+          <Link href="/creators" className="inline-flex min-h-11 items-center rounded-xl border border-border px-5 py-3 text-sm">
+            For Creators
+          </Link>
+        </div>
       </section>
     </main>
   );

@@ -85,6 +85,12 @@ export default function LibraryPage() {
             ))}
           </section>
         )}
+
+        <div className="rounded-2xl border border-border bg-card p-4">
+          <p className="text-sm text-muted-foreground">
+            If modules fail to load, the app now surfaces explicit API errors and recovery states rather than silent failures.
+          </p>
+        </div>
       </div>
     </section>
   );
