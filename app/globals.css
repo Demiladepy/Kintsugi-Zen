@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 4%;
+    --foreground: 0 0% 98%;
+    --muted: 0 0% 9%;
+    --muted-foreground: 0 0% 63%;
+    --card: 0 0% 6%;
+    --card-foreground: 0 0% 98%;
+    --border: 0 0% 14%;
+    --input: 0 0% 14%;
+    --primary: 195 100% 60%;
+    --primary-foreground: 0 0% 4%;
+    --accent-violet: 270 80% 65%;
+    --accent-amber: 38 92% 60%;
+    --success: 142 71% 45%;
+    --warning: 38 92% 60%;
+    --destructive: 0 72% 51%;
+    --ring: 195 100% 60%;
+    --radius: 0.75rem;
+    --reading-scale: 1;
+  }
+
+  [data-contrast="high"] {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    --primary: 180 100% 50%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html,
+  body {
+    @apply min-h-full bg-background text-foreground font-sans;
+  }
+
+  body {
+    text-rendering: optimizeLegibility;
+  }
+
+  :focus-visible {
+    outline: 2px solid hsl(var(--primary) / 0.6);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .skip-link {
+    @apply sr-only fixed left-4 top-4 z-50 rounded-md bg-card px-4 py-2 text-sm font-medium text-foreground;
+  }
+
+  .skip-link:focus-visible {
+    @apply not-sr-only;
+  }
+}
+
+@layer utilities {
+  .prose {
+    font-size: calc(1rem * var(--reading-scale));
+  }
+
+  .prose :where(p, li, blockquote) {
+    font-size: calc(1em * var(--reading-scale));
+  }
+}
