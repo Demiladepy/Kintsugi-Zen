@@ -8,10 +8,10 @@ import { cn } from "@/utils/cn";
 type Preset = "default" | "dyslexia" | "low-vision" | "adhd-focus" | "simplified";
 
 const denseText =
-  "The central process by which a digital computer executes a stored program consists of fetching an instruction from memory, decoding its operation and operands, and then carrying out the specified transformation upon data represented in finite binary form.";
+  "A programmable computer executes instructions in a repeating cycle. It fetches an instruction from memory, decodes the operation and its inputs, and then updates binary data to produce the required result.";
 
 const simplifiedText =
-  "A computer runs a program in repeated steps. It reads one instruction, understands what to do, and then changes data. All data and instructions are stored as binary values.";
+  "Computers work in small repeated steps. They pick an instruction, figure out what it means, then change data based on that instruction. Instructions and data are stored as binary values.";
 
 const presets: Record<
   Preset,
@@ -24,25 +24,25 @@ const presets: Record<
 > = {
   default: {
     label: "Default",
-    caption: "Original academic formatting with dense vocabulary and tighter rhythm.",
+    caption: "Original writing style with denser wording and standard spacing.",
     text: denseText,
     className: "font-reading text-reading leading-8 tracking-normal",
   },
   dyslexia: {
     label: "Dyslexia",
-    caption: "OpenDyslexic + extra spacing improve letter discrimination and scan comfort.",
+    caption: "Dyslexia-friendly font and spacing improve letter separation and scan flow.",
     text: denseText,
     className: "font-dyslexic text-reading leading-9 tracking-[0.03em]",
   },
   "low-vision": {
     label: "Low Vision",
-    caption: "Higher contrast and larger type increase readability under visual strain.",
+    caption: "Larger text and stronger contrast make reading easier under visual strain.",
     text: denseText,
-    className: "font-reading text-[1.35rem] leading-10 tracking-[0.01em] text-white",
+    className: "font-reading text-[1.35rem] leading-10 tracking-[0.01em] text-black",
   },
   "adhd-focus": {
     label: "ADHD Focus",
-    caption: "Chunked lines and calmer spacing reduce cognitive load and context switching.",
+    caption: "Chunked structure and calmer spacing reduce cognitive load.",
     text: denseText
       .replace("consists of fetching an instruction from memory, decoding its operation and operands,", "consists of:")
       .replace("and then carrying out the specified transformation upon data represented in finite binary form.", "1) fetch instruction from memory; 2) decode operation + operands; 3) execute transformation on binary data."),
@@ -50,7 +50,7 @@ const presets: Record<
   },
   simplified: {
     label: "Simplified",
-    caption: "Vocabulary and sentence structure are rewritten for faster comprehension.",
+    caption: "Complex words are replaced with plain language for faster understanding.",
     text: simplifiedText,
     className: "font-reading text-reading leading-8 tracking-[0.01em]",
   },
@@ -62,7 +62,7 @@ export function LivePreview() {
   const current = useMemo(() => presets[preset], [preset]);
 
   return (
-    <section className="space-y-4 rounded-2xl border border-border bg-card/80 p-4 sm:p-6">
+    <section className="space-y-4 rounded-2xl border border-border bg-gradient-to-b from-white to-[hsl(210_20%_98%)] p-4 shadow-[0_20px_60px_-35px_hsl(220_30%_15%/0.2)] sm:p-6">
       <div className="flex flex-wrap gap-2">
         {(Object.keys(presets) as Preset[]).map((key) => (
           <button
@@ -71,7 +71,9 @@ export function LivePreview() {
             onClick={() => setPreset(key)}
             className={cn(
               "min-h-11 rounded-full border px-4 text-sm transition",
-              key === preset ? "border-primary bg-primary/15 text-primary" : "border-border text-muted-foreground hover:text-foreground",
+              key === preset
+                ? "border-primary/70 bg-primary/10 text-primary"
+                : "border-border text-muted-foreground hover:border-primary/30 hover:text-foreground",
             )}
             aria-pressed={key === preset}
           >
@@ -84,8 +86,8 @@ export function LivePreview() {
         layout={!reducedMotion}
         transition={{ duration: reducedMotion ? 0 : 0.35 }}
         className={cn(
-          "rounded-xl border border-border bg-background/70 p-5",
-          preset === "low-vision" && "border-primary/60 bg-black",
+          "rounded-xl border border-border bg-white p-5 shadow-inner shadow-black/5",
+          preset === "low-vision" && "border-primary/60 bg-white",
         )}
       >
         <motion.p
@@ -100,7 +102,7 @@ export function LivePreview() {
       </motion.article>
 
       <p className="text-sm text-muted-foreground">{current.caption}</p>
-      <p className="text-sm font-medium text-primary">&#8592; This is what an on-chain Sensory Passport does</p>
+      <p className="text-sm font-medium text-primary">&#8592; This is how your saved reading profile changes content instantly</p>
     </section>
   );
 }

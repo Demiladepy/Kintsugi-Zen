@@ -8,23 +8,22 @@ export default function MarketingPage() {
     <main>
       <Hero />
       <section className="mx-auto flex w-full max-w-7xl flex-wrap items-center gap-4 border-y border-border px-4 py-5 text-sm text-muted-foreground sm:px-8">
-        <span>Built on</span>
-        <span>Solana</span>
+        <span>Designed for accessibility</span>
         <span>·</span>
-        <span>Token-2022</span>
+        <span>Readable typography</span>
         <span>·</span>
-        <span>Irys</span>
+        <span>Adaptive content</span>
         <span>·</span>
-        <span>Arweave</span>
+        <span>Consistent learning experience</span>
       </section>
       <HowItWorks />
       <BentoGrid />
       <section className="mx-auto w-full max-w-7xl px-4 pb-20 pt-8 text-center sm:px-8">
         <h2 className="mb-3 text-h2">Start with one click.</h2>
-        <p className="mb-6 text-muted-foreground">It takes 30 seconds. No email. No account.</p>
+        <p className="mb-6 text-muted-foreground">Set your profile in under a minute and start reading in a format that works for you.</p>
         <div className="flex flex-wrap items-center justify-center gap-3">
           <Link href="/connect" className="inline-flex min-h-11 items-center rounded-xl bg-primary px-5 py-3 font-semibold text-primary-foreground">
-            Connect Wallet
+            Get Started
           </Link>
           <Link href="/about" className="inline-flex min-h-11 items-center rounded-xl border border-border px-5 py-3 text-sm">
             About

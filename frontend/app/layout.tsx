@@ -1,13 +1,19 @@
 import type { Metadata } from "next";
 import { Lora } from "next/font/google";
+import { Varela_Round } from "next/font/google";
 import { GeistMono } from "geist/font/mono";
-import { GeistSans } from "geist/font/sans";
 import { Toaster } from "sonner";
 import { AxeDevtools } from "@/components/dev/axe-devtools";
 import "./globals.css";
 
 const lora = Lora({
   variable: "--font-reading",
+  subsets: ["latin"],
+});
+
+const varelaRound = Varela_Round({
+  variable: "--font-varela-round",
+  weight: "400",
   subsets: ["latin"],
 });
 
@@ -24,7 +30,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${GeistSans.variable} ${GeistMono.variable} ${lora.variable} h-full antialiased`}
+      className={`${varelaRound.variable} ${GeistMono.variable} ${lora.variable} h-full antialiased`}
       style={{ ["--font-dyslexic" as string]: "Arial, sans-serif" }}
     >
       <body className="min-h-full">

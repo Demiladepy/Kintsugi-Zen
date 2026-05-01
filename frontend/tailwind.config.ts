@@ -37,7 +37,7 @@ const config: Config = {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        sans: ["var(--font-geist-sans)"],
+        sans: ["var(--font-varela-round)", "sans-serif"],
         mono: ["var(--font-geist-mono)"],
         reading: ["var(--font-reading)"],
         dyslexic: ["var(--font-dyslexic)"],
