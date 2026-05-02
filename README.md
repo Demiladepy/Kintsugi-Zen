@@ -17,7 +17,7 @@ A decentralized accessibility protocol on Solana. Mint one profile to your walle
 
 ---
 
-## Explain it like I'm five
+## Explaination
 
 Imagine you have a special card in your pocket. It's a magic card.
 
