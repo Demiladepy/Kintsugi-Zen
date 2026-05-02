@@ -1,5 +1,21 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Diagrams
+
+Source files live in `public/diagrams/`. They show in this README on GitHub and are served on Vercel at `/diagrams/<filename>.svg`.
+
+### Sensory passport overview
+
+![Sensory passport overview](./public/diagrams/sensory_passport_overview.svg)
+
+### User journey flow
+
+![User journey flow](./public/diagrams/user_journey_flow.svg)
+
+### Technical architecture
+
+![Technical architecture](./public/diagrams/technical_architecture.svg)
+
 ## Getting Started
 
 First, run the development server:
