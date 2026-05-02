@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: kintsugi-api
+    runtime: node
+    rootDir: backend/services/api
+    buildCommand: npm install && npm run build
+    startCommand: node dist/index.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: SOLANA_RPC_URL
+        sync: false          
+      - key: MINT_AUTHORITY_SECRET_KEY
+        sync: false          
+      - key: PASSPORT_DIRECTORY_PROGRAM_ID
+        sync: false
